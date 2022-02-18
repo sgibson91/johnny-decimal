@@ -1,6 +1,7 @@
 import os
 import sys
 import glob
+import shutil
 import argparse
 
 import pandas as pd
@@ -70,7 +71,11 @@ def main():
             else:
                 dest_path = folders[0]
 
-            print(dest_path)
+            for i, row in cat_df.iterrows():
+                source_name = os.path.join(row["filepath"], row["filename"])
+                dest_name = os.path.join(dest_path, row["filename"])
+
+                shutil.move(source_name, dest_name)
 
 
 if __name__ == "__main__":
