@@ -1,5 +1,6 @@
 import os
 import sys
+import glob
 import argparse
 
 import pandas as pd
@@ -47,6 +48,11 @@ def main():
             if os.path.exists(filepath):
                 print(f"Deleting file: {filepath}")
                 os.remove(filepath)
+
+    df = df[df["delete"] == False]
+    areas = sorted(df["area"].dropna().unique().tolist())
+    folders = glob.glob(f"**{areas[0]**", recursive=True, root_dir=target_path)
+    print(folders)
 
 
 if __name__ == "__main__":
