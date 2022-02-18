@@ -31,7 +31,7 @@ def main():
     args = parse_args(sys.argv[1:])
 
     target_path = os.path.abspath(os.path.expanduser(args.target_path))
-    df = pd.DataFrame(columns=["filepath", "filename", "area", "category"])
+    df = pd.DataFrame(columns=["filepath", "filename", "area", "category", "delete"])
 
     for dir_name, _, files in os.walk(target_path):
         for filename in files:
@@ -40,6 +40,7 @@ def main():
                 "filename": filename,
                 "area": "",
                 "category": "",
+                "delete": False,
             }, index=[0])
             df = pd.concat([df, tmp], ignore_index=True)
 
