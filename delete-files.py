@@ -1,7 +1,6 @@
+import argparse
 import os
 import sys
-import shutil
-import argparse
 
 import pandas as pd
 

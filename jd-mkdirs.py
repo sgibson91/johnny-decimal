@@ -1,6 +1,6 @@
+import argparse
 import os
 import sys
-import argparse
 
 import pandas as pd
 
@@ -30,15 +30,15 @@ def parse_args(args: list):
 def main():
     args = parse_args(sys.argv[1:])
 
-    target_path = os.path.abspath(args.target_path)    
+    target_path = os.path.abspath(args.target_path)
     df = pd.read_csv(args.input)
 
     areas = sorted(df["area"].dropna().unique().tolist())
     if len(areas) > 10:
         raise ValueError(
-            f"Number of areas: {len(areas)}\n\n" +
-            "Only 10 areas permitted - please recategorise!\n\n" +
-            "\n".join([area for area in areas])
+            f"Number of areas: {len(areas)}\n\n"
+            + "Only 10 areas permitted - please recategorise!\n\n"
+            + "\n".join([area for area in areas])
         )
 
     for i, area in enumerate(areas):
@@ -48,15 +48,15 @@ def main():
         categories = sorted(sub_df["category"].dropna().unique().tolist())
         if len(categories) > 10:
             raise ValueError(
-                f"Number of categories: {len(categories)}\n\n" +
-                "Only 10 categories per area permitted - please recategorise!\n\n" +
-                "\n".join([category for category in categories])
+                f"Number of categories: {len(categories)}\n\n"
+                + "Only 10 categories per area permitted - please recategorise!\n\n"
+                + "\n".join([category for category in categories])
             )
 
         for j, category in enumerate(categories):
             category_dir = f"{i}{j} {category.title()}"
             folder_path = os.path.join(target_path, area_dir, category_dir)
- 
+
             if not os.path.exists(folder_path):
                 print(f"Creating folder: {area_dir}/{category_dir}")
                 os.makedirs(folder_path)

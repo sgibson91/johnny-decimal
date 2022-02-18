@@ -1,6 +1,6 @@
+import argparse
 import os
 import sys
-import argparse
 
 
 def parse_args(args: list):
