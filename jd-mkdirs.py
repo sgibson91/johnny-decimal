@@ -43,7 +43,6 @@ def main():
 
     for i, area in enumerate(areas):
         area_dir = f"{i}0 - {i}9 {area.title()}"
-        print(area_dir)
 
         sub_df = df[df["area"] == area]
         categories = sorted(sub_df["category"].dropna().unique().tolist())
@@ -56,10 +55,11 @@ def main():
 
         for j, category in enumerate(categories):
             category_dir = f"{i}{j} {category.title()}"
-            print(category_dir)
-
             folder_path = os.path.join(target_path, area_dir, category_dir)
-            print(folder_path)
+ 
+            if not os.path.exists(folder_path):
+                print(f"Creating folder: {area_dir}/{category_dir}")
+                os.makedirs(folder_path)
 
 
 if __name__ == "__main__":
