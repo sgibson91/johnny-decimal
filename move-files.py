@@ -44,7 +44,9 @@ def main():
         
         for i, row in purge_df.iterrows():
             filepath = os.path.join(row["filepath"], row["filename"])
-            print(f"Deleting file: {filepath}")
+            if os.path.exists(filepath):
+                print(f"Deleting file: {filepath}")
+                os.remove(filepath)
 
 
 if __name__ == "__main__":
