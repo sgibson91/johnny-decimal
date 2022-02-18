@@ -1,8 +1,8 @@
-import os
-import sys
-import glob
-import shutil
 import argparse
+import glob
+import os
+import shutil
+import sys
 
 import pandas as pd
 
@@ -37,13 +37,13 @@ def parse_args(args: list):
 
 def main():
     args = parse_args(sys.argv[1:])
-    
+
     target_path = os.path.abspath(args.target_path)
     df = pd.read_csv(args.input)
 
     if args.purge:
         purge_df = df[df["delete"] == True]
-        
+
         for i, row in purge_df.iterrows():
             filepath = os.path.join(row["filepath"], row["filename"])
             if os.path.exists(filepath):
@@ -60,7 +60,9 @@ def main():
         for category in categories:
             cat_df = sub_df[sub_df["category"] == category]
 
-            pattern = os.path.join(target_path, f"**{area.title()}**", f"**{category.title()}**")
+            pattern = os.path.join(
+                target_path, f"**{area.title()}**", f"**{category.title()}**"
+            )
             folders = glob.glob(pattern)
 
             if len(folders) > 1:

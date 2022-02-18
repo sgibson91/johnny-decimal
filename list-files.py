@@ -1,6 +1,6 @@
+import argparse
 import os
 import sys
-import argparse
 
 import pandas as pd
 
@@ -35,13 +35,16 @@ def main():
 
     for dir_name, _, files in os.walk(target_path):
         for filename in files:
-            tmp = pd.DataFrame({
-                "filepath": dir_name,
-                "filename": filename,
-                "area": "",
-                "category": "",
-                "delete": False,
-            }, index=[0])
+            tmp = pd.DataFrame(
+                {
+                    "filepath": dir_name,
+                    "filename": filename,
+                    "area": "",
+                    "category": "",
+                    "delete": False,
+                },
+                index=[0],
+            )
             df = pd.concat([df, tmp], ignore_index=True)
 
     df.to_csv(args.output, index=False)
