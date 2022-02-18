@@ -57,12 +57,12 @@ def main():
         categories = sorted(sub_df["category"].dropna().unique().tolist())
 
         for category in categories:
-            cat_df = subdf[subdf["category"] == category]
+            cat_df = sub_df[sub_df["category"] == category]
 
             pattern = os.path.join(target_path, f"**{area.title()}**", f"**{category.title()}**")
             folders = glob.glob(pattern)
 
-            if len(folder) > 1:
+            if len(folders) > 1:
                 print(
                     f"WARNING: Multiple matching folders found. Skipping this category: {category}"
                 )
