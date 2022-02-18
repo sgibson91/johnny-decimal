@@ -51,9 +51,26 @@ def main():
 
     df = df[df["delete"] == False]
     areas = sorted(df["area"].dropna().unique().tolist())
-    pattern = os.path.join(target_path, f"**{areas[0].title()}**")
-    folders = glob.glob(pattern, recursive=True)
-    print(folders)
+
+    for area in areas:
+        sub_df = df[df["area"] == area]
+        categories = sorted(sub_df["category"].dropna().unique().tolist())
+
+        for category in categories:
+            cat_df = subdf[subdf["category"] == category]
+
+            pattern = os.path.join(target_path, f"**{area.title()}**", f"**{category.title()}**")
+            folders = glob.glob(pattern)
+
+            if len(folder) > 1:
+                print(
+                    f"WARNING: Multiple matching folders found. Skipping this category: {category}"
+                )
+                continue
+            else:
+                dest_path = folders[0]
+
+            print(dest_path)
 
 
 if __name__ == "__main__":
