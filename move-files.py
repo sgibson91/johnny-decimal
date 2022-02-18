@@ -51,7 +51,8 @@ def main():
 
     df = df[df["delete"] == False]
     areas = sorted(df["area"].dropna().unique().tolist())
-    folders = glob.glob(f"**{areas[0]**", recursive=True, root_dir=target_path)
+    pattern = os.path.join(target_path, f"**{areas[0].title()}**")
+    folders = glob.glob(pattern, recursive=True)
     print(folders)
 
 
