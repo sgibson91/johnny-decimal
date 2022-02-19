@@ -42,7 +42,7 @@ def main():
         )
 
     for i, area in enumerate(areas):
-        area_dir = f"{i}0 - {i}9 {area.title()}"
+        area_dir = f"{i}0-{i}9 {area.title()}"
 
         sub_df = df[df["area"] == area]
         categories = sorted(sub_df["category"].dropna().unique().tolist())
