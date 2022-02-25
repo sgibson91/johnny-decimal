@@ -33,7 +33,7 @@ def main():
     target_path = os.path.abspath(os.path.expanduser(args.target_path))
     df = pd.DataFrame(columns=["filepath", "dirname", "area", "category", "delete"])
 
-    for dir_name, subdirs, files in os.walk(target_path):
+    for dir_name, subdirs, _ in os.walk(target_path):
         if not subdirs:
             tmp = pd.DataFrame(
                 {
