@@ -1,6 +1,6 @@
 # The Johnny Decimal File System
 
-A set of Python scripts to assist with organising files into the Johnny Decimal system - https://johnnydecimal.com/
+A set of Python scripts to assist with organising files into the Johnny Decimal system - <https://johnnydecimal.com/>
 
 ## Scripts
 
