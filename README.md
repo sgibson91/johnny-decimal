@@ -2,6 +2,21 @@
 
 A set of Python scripts to assist with organising files into the Johnny Decimal system - <https://johnnydecimal.com/>
 
+## Installation
+
+To use these scripts, a modern version of Python is required.
+The dependencies for this project are listed in the `requirements.txt` file, but in reality, it only depends on the `pandas` package.
+
+To be ready to run these scripts, you only need run **one** of the following commands (you may wish to create a virtual environment using `venv` or `conda` first):
+
+```bash
+# To install dependencies using the requirements file
+pip install -r requirements.txt
+
+# To directly install pandas
+pip install pandas
+```
+
 ## Scripts
 
 - [`01a-list-files.py`](01a-list-files.py)
