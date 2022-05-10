@@ -146,3 +146,45 @@ positional arguments:
 optional arguments:
   -h, --help   show this help message and exit
 ```
+
+## Extras
+
+### Jumping straight to a Johnny Decimal folder in your command line
+
+Add the below snippet to your shell's rc file to change directly into a given Johnny Decimal folder by providing its Johnny Decimal number.
+
+```
+# Johnny.Decimal cd function
+function cjd {
+   pushd ~/path/to/johnny-decimal/*/*/${1}*  # Update /path/to/johnny-decimal appropriately
+}
+```
+
+### Generating an index of your Johnny Decimal folder
+
+While the Johnny Decimal system makes it easy for you to remember the folders you use most often, what about those you use less often?
+Having an index would be helpful to jog our memories from time to time.
+
+On UNIX systems, you can use the `tree` command to generate such an index!
+
+From the top of your Johnny Decimal system, run the following command:
+
+```bash
+tree -L 3 . >> index.txt
+```
+
+The first part of the command will generate something like the following output:
+
+```
+.
+├── 00-09 Area 1
+│   ├── 00.00 Category 1
+│   └── 00.01 Category 2
+└── 10-19 Area 2
+    ├── 00.00 Category 1
+    └── 00.01 Category 2
+
+6 directories, 0 files
+```
+
+and the second part of the command will save that output to the `index.txt` file as a reference!
