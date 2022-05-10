@@ -10,7 +10,7 @@ The dependencies for this project are listed in the `requirements.txt` file, but
 To be ready to run these scripts, you only need run **one** of the following commands (you may wish to create a virtual environment using `venv` or `conda` first):
 
 ```bash
-#To install dependencies using the requirements file
+# To install dependencies using the requirements file
 pip install -r requirements.txt
 
 # To directly install pandas
